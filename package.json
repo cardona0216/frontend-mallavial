@@ -14,8 +14,10 @@
     "react": "^18",
     "react-dom": "^18",
     "react-paginate": "^8.2.0",
+    "react-toastify": "^10.0.5",
     "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.5"
+    "semantic-ui-react": "^2.1.5",
+    "sweetalert2": "^11.14.0"
   },
   "devDependencies": {
     "@types/node": "^20",
