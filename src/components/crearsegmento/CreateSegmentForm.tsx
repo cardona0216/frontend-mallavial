@@ -35,14 +35,20 @@ const CreateSegmentForm = () => {
     const agregarCalzada = () => {
         setCalzadas([...calzadas, { nombre: '', material: '' }]);
     };
-    const agregarBordillo = () => {
-        setBordillos([...bordillos, { tipo: '', material: '' }]);
-    };
-
     const eliminarCalzada = (index:number) => {
         const nuevasCalzadas = calzadas.filter((_, i) => i !== index);
         setCalzadas(nuevasCalzadas);
     };
+
+    const agregarBordillo = () => {
+        setBordillos([...bordillos, { tipo: '', material: '' }]);
+    };
+
+    const eliminarBordillo = (index:number) => {
+        const nuevasBordillo = bordillos.filter((_, i) => i !== index);
+        setBordillos(nuevasBordillo);
+    };
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -100,7 +106,24 @@ const CreateSegmentForm = () => {
         <div>
         <Navbar></Navbar>
         <Form onSubmit={handleSubmit}>
-        <Button type='submit'  onClick={() => router.push('/')} disabled={!isFormValid}>Crear Segmento</Button>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '10px' }}>
+        <Button
+          type='submit'
+          onClick={handleSubmit}
+          disabled={!isFormValid}
+          style={{
+            backgroundColor: '#007bff', // Color primario (azul)
+            color: '#fff', // Color del texto (blanco)
+            border: 'none', // Sin borde
+            padding: '10px 20px', // Espaciado interno
+            cursor: 'pointer', // Cursor tipo puntero
+            borderRadius: '4px', // Bordes redondeados
+            fontSize: '16px', // Tamaño del texto
+          }}
+        >
+          Crear Segmento
+        </Button>
+      </div>
             <Form.Field>
                 <label>Nombre del Segmento</label>
                 <Input
@@ -180,6 +203,15 @@ const CreateSegmentForm = () => {
                                 )
                             }
                         />
+                        
+                           <Button
+                            style={{ marginTop: '10px'}}
+                            type="button"
+                            onClick={() => eliminarBordillo(index)}
+                            disabled={bordillos.length === 1}  
+                        >
+                            eliminar
+                        </Button>
                     </div>
                 ))}
                  <Button type="button" onClick={agregarBordillo} style={{ marginTop: '10px' }}>

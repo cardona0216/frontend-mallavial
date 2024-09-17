@@ -1,5 +1,6 @@
 // pages/index.js
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { Table, Header, Button } from 'semantic-ui-react';
 import { Segmento } from './types';
@@ -21,17 +22,18 @@ const fetchSegmentos = async () => {
 };
 
 const Home = () => {
+  const router = useRouter()
   const [segmentos, setSegmentos] = useState<Segmento[]>([]);
 
   const handleEdit = (id: number) => {
-    // Redirige a la página de edición del segmento
-    window.location.href = `/edit-segment/${id}`;
+    
+  router.push(`/edit-segment/${id}`);
 };
 
 const handleDelete = async (id: number) => {
   const segmento = segmentos.find(seg => seg.id === id);
   const nombreSegmento = segmento ? segmento.nombre : 'Este segmento';
-  
+
   const result = await Swal.fire({
     title: '¿Estás seguro?',
     text: `Estás a punto de eliminar el segmento "${nombreSegmento}". Esta acción no se puede deshacer.`,
@@ -81,7 +83,7 @@ const handleDelete = async (id: number) => {
     <Layout>
       
       <Header as='h1'>Segmentos Viales</Header>
-      <Link href="/create-segment" passHref>
+      <Link href="/crear/crear" >
                 <Button primary>
                     Crear Nuevo Segmento
                 </Button>
