@@ -105,7 +105,7 @@ const handleDelete = async (id: number) => {
              
               <Table.Cell>{segmento.nombre}</Table.Cell>
               <Table.Cell>
-                <ul>
+              <ul style={{listStyleType:'none'}}>
                   {segmento.calzadas.length > 0 ? (
                     segmento.calzadas.map(calzada => (
                       <li key={calzada.id}>
@@ -118,7 +118,7 @@ const handleDelete = async (id: number) => {
                 </ul>
               </Table.Cell>
               <Table.Cell>
-                <ul>
+                <ul style={{listStyleType:'none'}}>
                   {segmento.bordillos.length > 0 ? (
                     segmento.bordillos.map(bordillo => (
                       <li key={bordillo.id}>
@@ -131,12 +131,10 @@ const handleDelete = async (id: number) => {
                 </ul>
               </Table.Cell>
               <Table.Cell>
-                                <Button onClick={() => handleEdit(segmento.id)} primary>Editar</Button>
-                               
+                <Button onClick={() => handleEdit(segmento.id)} primary>Editar</Button>             
               </Table.Cell>
-              <Table.Cell>
-                                
-                                <Button onClick={() => handleDelete(segmento.id)} negative>Eliminar</Button>
+              <Table.Cell>            
+                 <Button onClick={() => handleDelete(segmento.id)} negative>Eliminar</Button>
               </Table.Cell>
             </Table.Row>
           ))}
